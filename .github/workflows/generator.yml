@@ -38,6 +38,7 @@ jobs:
       with:
         repository: 'pmmp/bds-modding-devkit'
         submodules: 'recursive'
+        path: 'devkit'
         
     - name: Debug
       run: |
@@ -52,7 +53,7 @@ jobs:
       run: |
         echo "Working in $(pwd)"
         ls
-        ./scripts/setup ~/bds
+        ./scripts/setup bds
         
     - name: Artifact mapping mod
       uses: actions/upload-artifact@v3
