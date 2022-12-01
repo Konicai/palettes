@@ -40,6 +40,5 @@ jobs:
     - name: Setup modded server
       shell: bash
       run: |
-        cd bds-modding-devkit
         ./scripts/setup ~/bds
 
