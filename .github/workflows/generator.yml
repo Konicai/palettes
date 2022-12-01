@@ -45,7 +45,7 @@ jobs:
         ls code/mapping/build
         
     - name: Artifact mapping mod
-      uses: actions/checkout@v2
+      uses: actions/upload-artifact@v3
       with:
         name: mod binaries
         path: 'code/**/build/*.so'
