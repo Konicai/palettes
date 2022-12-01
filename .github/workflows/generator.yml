@@ -26,5 +26,5 @@ jobs:
     - name: Download and Compile
       shell: bash
       run: |
-          ./.github/generate.sh
+          ./generate.sh
 
