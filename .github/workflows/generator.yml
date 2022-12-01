@@ -39,6 +39,14 @@ jobs:
         repository: 'pmmp/bds-modding-devkit'
         submodules: 'recursive'
         
+    - name: Debug
+      run: |
+        echo ~
+        echo $GITHUB_WORKSPACE
+        ls ~
+        ls $GITHUB_WORKSPACE
+        ls
+        
     - name: Setup modded server
       shell: bash
       run: |
