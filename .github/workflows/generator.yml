@@ -15,8 +15,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-    - uses: actions/checkout@v3
 
     - uses: actions/setup-python@v4
       with:
@@ -24,9 +22,24 @@ jobs:
     
     - run: python -m pip install lief frida frida-tools
     
-    - name: Download and Compile
+    - name: Download BDS
       shell: bash
       run: |
-          chmod +x generate.sh
-          ./generate.sh
+        SERVER="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.19.50.02.zip"
+        mkdir -p bds
+        cd bds
+        curl $SERVER -o serverpack.zip
+        unzip -q serverpack.zip
+        
+    - name: Clone devkit
+      uses: actions/checkout@v3
+      with:
+        repository: 'pmmp/bds-modding-devkit'
+        submodules: 'recursive'
+        
+    - name: Setup modded server
+      shell: bash
+      run: |
+        cd bds-modding-devkit
+        ./scripts/setup ~/bds
 
