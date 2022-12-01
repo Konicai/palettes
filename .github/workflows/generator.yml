@@ -34,6 +34,18 @@ jobs:
         curl $SERVER -o serverpack.zip
         unzip -q serverpack.zip
         
+    - name: Checkout For World File
+      uses: actions/checkout@v3
+      with:
+        path: 'data'
+        
+    - name: Insert custom world into BDS
+      run: |
+        mkdir -p bds/worlds/'Bedrock level'
+        cd bds/worlds/'Bedrock level'
+        cp $GITHUB_WORKSPACE/data/world/** .
+        ls
+        
     - name: Clone pmmp/bds-modding-devkit
       uses: actions/checkout@v3
       with:
