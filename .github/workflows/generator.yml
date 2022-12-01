@@ -39,13 +39,6 @@ jobs:
       with:
         path: 'data'
         
-    - name: Insert custom world into BDS
-      run: |
-        mkdir -p bds/worlds/'Bedrock level'
-        cd bds/worlds/'Bedrock level'
-        cp -r $GITHUB_WORKSPACE/data/world/** .
-        ls
-        
     - name: Clone pmmp/bds-modding-devkit
       uses: actions/checkout@v3
       with:
@@ -63,6 +56,16 @@ jobs:
       with:
         name: mod_binaries
         path: 'devkit/code/**/build/*.so'
+        
+    - name: Insert custom world into Modded Server
+      run: |
+        mkdir -p devkit/worlds/CustomLevel
+        cd devkit/worlds/CustomLevel
+        cp -r $GITHUB_WORKSPACE/data/world/** .
+        ls
+        
+        cd $GITHUB_WORKSPACE/devkit
+        sed -i 's/Bedrock level/CustomLevel' server.properties
 
     - name: Run Modded Server
       run: |
