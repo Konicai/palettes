@@ -19,7 +19,8 @@ jobs:
     - name: pwd
       run: |
          pwd
-         ls ./.gihub
+         ls .github
+         ls /.github
     
     - name: Download and Compile
       run: |
