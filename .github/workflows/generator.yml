@@ -19,7 +19,8 @@ jobs:
     - name: pwd
       run: |
          pwd
-         ls /.github
+         echo ${PWD}
+         echo ${GITHUB_WORKSPACE}
     
     - name: Download and Compile
       run: |
