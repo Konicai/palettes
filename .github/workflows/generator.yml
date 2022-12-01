@@ -54,7 +54,7 @@ jobs:
         ls
         bds_dir=$GITHUB_WORKSPACE/bds
         echo $bds_dir
-        ls bds_dir
+        ls $bds_dir
         ./scripts/setup $bds_dir
         
     - name: Artifact mapping mod
