@@ -42,11 +42,10 @@ jobs:
         
     - name: Debug
       run: |
-        echo ~
-        echo $GITHUB_WORKSPACE
-        ls ~
-        ls $GITHUB_WORKSPACE
-        ls
+        ls bds
+        echo ""
+        echo ""
+        ls $GITHUB_WORKSPACE/bds
         
     - name: Setup modded server
       shell: bash
@@ -54,7 +53,7 @@ jobs:
         cd devkit
         echo "Working in $(pwd)"
         ls
-        ./scripts/setup bds
+        ./scripts/setup $GITHUB_WORKSPACE/bds
         
     - name: Artifact mapping mod
       uses: actions/upload-artifact@v3
