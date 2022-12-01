@@ -16,14 +16,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    - uses: actions/setup-python@v4
+    - name: Setup Python 
+      uses: actions/setup-python@v4
       with:
         python-version: '3.11' 
     
-    - name: Install python packages
+    - name: Install Python Packages
       run: python -m pip install lief frida frida-tools
     
-    - name: Download BDS
+    - name: Download Bedrock Dedicated Server
       shell: bash
       run: |
         pwd
@@ -40,41 +41,28 @@ jobs:
         submodules: 'recursive'
         path: 'devkit'
         
-    - name: Debug
-      run: |
-        ls bds
-        echo ""
-        echo ""
-        ls $GITHUB_WORKSPACE/bds
-        
-    - name: Setup modded server
-      shell: bash
+    - name: Compile Mod Environment
       run: |
         cd devkit
-        ls
-        bds_dir=$GITHUB_WORKSPACE/bds
-        echo $bds_dir
-        ls $bds_dir
-        ./scripts/setup $bds_dir
+        ./scripts/setup "$GITHUB_WORKSPACE/bds"
         
-    - name: Artifact mapping mod
+    - name: Artifact Mod Binaries
       uses: actions/upload-artifact@v3
       with:
-        name: mod binaries
+        name: mod_binaries
         path: 'devkit/code/**/build/*.so'
 
-    - name: Run server
+    - name: Run Modded Server
       run: |
         cd devkit
-        ls
         ./start.sh &
         sleep 10
         kill $! # Kills the last process that was sent to the background
         
-    - name: Artifact mapping files
+    - name: Artifact Mapping Files
       uses: actions/upload-artifact@v3
       with:
-        name: Mapping files
+        name: mapping_files
         path: 'devkit/mapping_files/**'
         
 
