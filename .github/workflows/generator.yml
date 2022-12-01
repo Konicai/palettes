@@ -41,12 +41,18 @@ jobs:
       shell: bash
       run: |
         ./scripts/setup ~/bds
-        echo "mapping build:"
-        ls code/mapping/build
         
     - name: Artifact mapping mod
       uses: actions/upload-artifact@v3
       with:
         name: mod binaries
         path: 'code/**/build/*.so'
+
+    - name: Run server
+      run: |
+        ./start.sh &
+        sleep 10
+        fg
+        stop
+        
 
