@@ -41,7 +41,12 @@ jobs:
       shell: bash
       run: |
         ./scripts/setup ~/bds
-        ls mods
-        ls mapping_files
-        ls code/mapping/build CMakeFiles
+        echo "mapping build:"
+        ls code/mapping/build
+        
+    - name: Artifact mapping mod
+      uses: actions/checkout@v2
+      with:
+        name: mod binaries
+        path: 'code/**/build/*.so'
 
