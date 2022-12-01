@@ -51,6 +51,7 @@ jobs:
     - name: Setup modded server
       shell: bash
       run: |
+        cd devkit
         echo "Working in $(pwd)"
         ls
         ./scripts/setup bds
