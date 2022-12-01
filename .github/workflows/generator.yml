@@ -26,7 +26,7 @@ jobs:
     - name: Download BDS
       shell: bash
       run: |
-        echo "Working in $(pwd)"
+        pwd
         SERVER="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.19.50.02.zip"
         mkdir -p bds
         cd bds
@@ -60,13 +60,13 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: mod binaries
-        path: 'code/**/build/*.so'
+        path: 'devkit/code/**/build/*.so'
 
     - name: Run server
       run: |
-        echo "Working in $(pwd)"
+        pwd
         ls
-        ./start.sh &
+        ./devkit/start.sh &
         sleep 10
         echo "stop" > /proc/$!/fd/0
         
@@ -74,6 +74,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Mapping files
-        path: 'mapping_files/**'
+        path: 'devkit/mapping_files/**'
         
 
