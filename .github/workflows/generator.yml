@@ -21,6 +21,6 @@ jobs:
     
     - name: Download and Compile
       run: |
-         chmod +x ./.github/generate.sh
+         chmod +x .github/generate.sh
          ./.github/generate.sh
       shell: bash
