@@ -65,7 +65,7 @@ jobs:
         ls
         
         cd $GITHUB_WORKSPACE/devkit
-        sed -i 's/Bedrock level/CustomLevel' server.properties
+        sed -i 's/Bedrock level/CustomLevel/' server.properties
 
     - name: Run Modded Server
       run: |
