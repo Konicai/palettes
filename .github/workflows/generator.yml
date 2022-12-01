@@ -69,7 +69,7 @@ jobs:
         ls
         ./devkit/start.sh &
         sleep 10
-        echo "stop" > /proc/$!/fd/0
+        kill $! # Kills the last process that was sent to the background
         
     - name: Artifact mapping files
       uses: actions/upload-artifact@v3
