@@ -52,10 +52,10 @@ jobs:
       run: |
         cd devkit
         ls
-        bds_dir = $GITHUB_WORKSPACE/bds
-        echo bds_dir
+        bds_dir=$GITHUB_WORKSPACE/bds
+        echo $bds_dir
         ls bds_dir
-        ./scripts/setup bds_dir
+        ./scripts/setup $bds_dir
         
     - name: Artifact mapping mod
       uses: actions/upload-artifact@v3
