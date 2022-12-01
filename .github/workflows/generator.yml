@@ -43,7 +43,7 @@ jobs:
       run: |
         mkdir -p bds/worlds/'Bedrock level'
         cd bds/worlds/'Bedrock level'
-        cp $GITHUB_WORKSPACE/data/world/** .
+        cp -r $GITHUB_WORKSPACE/data/world/** .
         ls
         
     - name: Clone pmmp/bds-modding-devkit
