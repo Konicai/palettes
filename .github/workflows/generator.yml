@@ -41,4 +41,7 @@ jobs:
       shell: bash
       run: |
         ./scripts/setup ~/bds
+        ls mods
+        ls mapping_files
+        ls code/mapping/build CMakeFiles
 
