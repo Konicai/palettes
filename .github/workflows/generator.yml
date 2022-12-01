@@ -31,7 +31,7 @@ jobs:
         curl $SERVER -o serverpack.zip
         unzip -q serverpack.zip
         
-    - name: Clone devkit
+    - name: Clone pmmp/bds-modding-devkit
       uses: actions/checkout@v3
       with:
         repository: 'pmmp/bds-modding-devkit'
@@ -52,7 +52,12 @@ jobs:
       run: |
         ./start.sh &
         sleep 10
-        fg
-        stop
+        echo "stop" > /proc/$!/fd/0
+        
+    - name: Artifact mapping files
+      uses: actions/upload-artifact@v3
+      with:
+        name: Mapping files
+        path: 'mapping_files/**'
         
 
