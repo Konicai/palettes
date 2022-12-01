@@ -4,7 +4,7 @@ name: Palette Generator
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
-on: workflow_dispatch
+on: [workflow_dispatch, push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -51,9 +51,11 @@ jobs:
       shell: bash
       run: |
         cd devkit
-        echo "Working in $(pwd)"
         ls
-        ./scripts/setup $GITHUB_WORKSPACE/bds
+        bds_dir = $GITHUB_WORKSPACE/bds
+        echo bds_dir
+        ls bds_dir
+        ./scripts/setup bds_dir
         
     - name: Artifact mapping mod
       uses: actions/upload-artifact@v3
