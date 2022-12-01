@@ -65,9 +65,9 @@ jobs:
 
     - name: Run server
       run: |
-        pwd
+        cd devkit
         ls
-        ./devkit/start.sh &
+        ./start.sh &
         sleep 10
         kill $! # Kills the last process that was sent to the background
         
