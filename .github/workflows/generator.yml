@@ -26,8 +26,5 @@ jobs:
     - name: Download and Compile
       shell: bash
       run: |
-          mkdir -p staging
-          cp generate.sh staging/
-          cd staging
-          chmod +x generate.sh.sh
+          ./.github/generate.sh
 
