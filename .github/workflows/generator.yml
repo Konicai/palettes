@@ -24,7 +24,10 @@ jobs:
          ls
     
     - name: Download and Compile
-      run: |
-         chmod +x generate.sh
-         ./generate.sh
       shell: bash
+      run: |
+          mkdir -p staging
+          cp generate.sh staging/
+          cd staging
+          chmod +x generate.sh.sh
+
