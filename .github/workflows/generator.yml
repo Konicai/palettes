@@ -28,16 +28,16 @@ jobs:
       shell: bash
       run: |
         pwd
-        SERVER="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.19.50.02.zip"
+        SERVER="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.19.70.02.zip"
         mkdir -p bds
         cd bds
         curl $SERVER -o serverpack.zip
         unzip -q serverpack.zip
         
-    - name: Checkout For World File
-      uses: actions/checkout@v3
-      with:
-        path: 'data'
+#    - name: Checkout For World File
+#      uses: actions/checkout@v3
+#      with:
+#        path: 'data'
         
     - name: Clone pmmp/bds-modding-devkit
       uses: actions/checkout@v3
@@ -57,15 +57,15 @@ jobs:
         name: mod_binaries
         path: 'devkit/code/**/build/*.so'
         
-    - name: Insert custom world into Modded Server
-      run: |
-        mkdir -p devkit/worlds/CustomLevel
-        cd devkit/worlds/CustomLevel
-        cp -r $GITHUB_WORKSPACE/data/world/** .
-        ls
-        
-        cd $GITHUB_WORKSPACE/devkit
-        sed -i 's/Bedrock level/CustomLevel/' server.properties
+#    - name: Insert custom world into Modded Server
+#      run: |
+#        mkdir -p devkit/worlds/CustomLevel
+#        cd devkit/worlds/CustomLevel
+#        cp -r $GITHUB_WORKSPACE/data/world/** .
+#        ls
+#        
+#        cd $GITHUB_WORKSPACE/devkit
+#        sed -i 's/Bedrock level/CustomLevel/' server.properties
 
     - name: Run Modded Server
       run: |
