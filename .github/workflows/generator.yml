@@ -28,7 +28,7 @@ jobs:
       shell: bash
       run: |
         pwd
-        SERVER="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.19.81.01.zip"
+        SERVER="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.20.10.01.zip"
         mkdir -p bds
         cd bds
         curl $SERVER -o serverpack.zip
